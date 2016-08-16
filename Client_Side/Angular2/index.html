@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <base href="/">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Angular</title>
+  <!-- Bootstrap -->
+  <!--<link href="content/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
+  <!-- Font Awesome -->
+  <!--<link href="content/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
+  <!--<link href="content/css/style.css" rel="stylesheet">-->
+  <!-- Custom Theme Style -->
+  <!--<link href="content/css/custom.css" rel="stylesheet">-->
+</head>
+
+<body class="nav-md">
+  <default-layout></default-layout>
+  <!--<script src="systemjs.conf.js"></script>-->
+  <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+  <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+  <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
+  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="node_modules/rxjs/bundles/Rx.js"></script>
+  <script src="node_modules/angular2/bundles/angular2.js"></script>
+  <script src="node_modules/angular2/bundles/router.js"></script>
+  <script src="node_modules/angular2/bundles/http.js"></script>
+  <!-- jQuery -->
+  <!--<script src="content/vendors/jquery/dist/jquery.min.js"></script>-->
+  <!-- Bootstrap -->
+  <!--<script src="content/vendors/bootstrap/dist/js/bootstrap.min.js"></script>-->
+  <!-- Custom Theme Scripts -->
+  <!--<script src="content/js/custom.js"></script>-->
+  <script>
+    System.config({
+      packages:{
+        app: {format: 'register',defaultExtension: 'js'}
+      }
+    });
+    System.import('app/main.js').then(null, console.error.bind(console));
+  </script>
+</body>
+
+</html>
