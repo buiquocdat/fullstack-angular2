@@ -10,8 +10,8 @@ import {CreateUser} from './components/createUser';
 })
 
 @RouteConfig([
-    {path: '/users', name: 'Users', component: Users},
-    {path: './createUser', name: 'Create User', component: CreateUser, useAsDefault: true}
+    {path: '/users', name: 'Users', component: Users, useAsDefault: true},
+    {path: '/createUser', name: 'Create User', component: CreateUser}
 ])
 
 export class DefaultLayout{}
