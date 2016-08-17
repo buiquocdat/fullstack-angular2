@@ -9,17 +9,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Angular</title>
   <!-- Bootstrap -->
-  <!--<link href="content/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
+  <link href="./app/resources/theme/gentelella-master/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
-  <!--<link href="content/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
-  <!--<link href="content/css/style.css" rel="stylesheet">-->
+  <link href="./app/resources/theme/gentelella-master/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <!-- Custom Theme Style -->
-  <!--<link href="content/css/custom.css" rel="stylesheet">-->
+  <link href="./app/resources/theme/gentelella-master/css/custom.css" rel="stylesheet">
+  <!-- Datatables -->
+  <link href="./app/resources/theme/gentelella-master/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+  <link href="./app/resources/theme/gentelella-master/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css"
+    rel="stylesheet">
 </head>
 
 <body class="nav-md">
   <default-layout></default-layout>
-  <!--<script src="systemjs.conf.js"></script>-->
   <script src="node_modules/es6-shim/es6-shim.min.js"></script>
   <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
   <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
@@ -29,12 +31,6 @@
   <script src="node_modules/angular2/bundles/angular2.js"></script>
   <script src="node_modules/angular2/bundles/router.js"></script>
   <script src="node_modules/angular2/bundles/http.js"></script>
-  <!-- jQuery -->
-  <!--<script src="content/vendors/jquery/dist/jquery.min.js"></script>-->
-  <!-- Bootstrap -->
-  <!--<script src="content/vendors/bootstrap/dist/js/bootstrap.min.js"></script>-->
-  <!-- Custom Theme Scripts -->
-  <!--<script src="content/js/custom.js"></script>-->
   <script>
     System.config({
       packages:{
@@ -43,6 +39,28 @@
     });
     System.import('app/main.js').then(null, console.error.bind(console));
   </script>
+
+  <!-- jQuery -->
+  <script src="./app/resources/theme/gentelella-master/vendors/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="./app/resources/theme/gentelella-master/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- Custom Theme Scripts -->
+  <script src="./app/resources/theme/gentelella-master/js/custom.js"></script>
+  <!-- Datatables -->
+  <script src="./app/resources/theme/gentelella-master/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="./app/resources/theme/gentelella-master/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <script src="./app/resources/theme/gentelella-master/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+
+  <!-- Datatables -->
+  <script>
+      $(document).ready(function() {
+        function loadDatatable(){
+          $('#datatable-responsive').DataTable();
+        }
+        window.setTimeout(loadDatatable, 2000);
+      });
+    </script>
+  <!-- /Datatables -->
 </body>
 
 </html>
