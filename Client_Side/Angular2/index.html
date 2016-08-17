@@ -18,6 +18,8 @@
   <link href="./app/resources/theme/gentelella-master/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
   <link href="./app/resources/theme/gentelella-master/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css"
     rel="stylesheet">
+  <!-- Switchery -->
+  <link href="./app/resources/theme/gentelella-master/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
 </head>
 
 <body class="nav-md">
@@ -50,17 +52,35 @@
   <script src="./app/resources/theme/gentelella-master/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
   <script src="./app/resources/theme/gentelella-master/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
   <script src="./app/resources/theme/gentelella-master/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+  <!-- bootstrap-daterangepicker -->
+  <script src="./app/resources/theme/gentelella-master/js/moment/moment.min.js"></script>
+  <script src="./app/resources/theme/gentelella-master/js/datepicker/daterangepicker.js"></script>
+  <!-- Switchery -->
+  <script src="./app/resources/theme/gentelella-master/vendors/switchery/dist/switchery.min.js"></script>
 
-  <!-- Datatables -->
   <script>
-      $(document).ready(function() {
-        function loadDatatable(){
-          $('#datatable-responsive').DataTable();
-        }
-        window.setTimeout(loadDatatable, 2000);
-      });
-    </script>
-  <!-- /Datatables -->
+    //Datatables
+    $(document).ready(function() {
+      function loadDatatable(){
+        $('#datatable-responsive').DataTable();
+      }
+      window.setTimeout(loadDatatable, 3000);
+    });
+  </script>
+  <script>
+  //bootstrap-daterangepicker
+    $(document).ready(function() {
+      function datePicker(){
+        $('#birthday').daterangepicker({
+            singleDatePicker: true,
+            calender_style: "picker_4"
+        }, function(start, end, label) {
+            console.log(start.toISOString(), end.toISOString(), label);
+        });
+      }
+      window.setTimeout(datePicker, 3000);
+    });
+  </script>
 </body>
 
 </html>

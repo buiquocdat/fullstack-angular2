@@ -37,8 +37,8 @@ System.register(['angular2/core', 'angular2/router', './components/users', './co
                         directives: [router_1.RouterOutlet, router_1.RouterLink]
                     }),
                     router_1.RouteConfig([
-                        { path: '/users', name: 'Users', component: users_1.Users, useAsDefault: true },
-                        { path: './createUser', name: 'Create User', component: createUser_1.CreateUser }
+                        { path: '/users', name: 'Users', component: users_1.Users },
+                        { path: './createUser', name: 'Create User', component: createUser_1.CreateUser, useAsDefault: true }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], DefaultLayout);
