@@ -4,7 +4,7 @@ import {PageActions, Grid} from "../../../common/directive";
 import {BasePage, PageAction} from "../../../common/models/ui";
 import {PermissionsModel} from "./permissionsModel";
 import permissionService from "../_share/service/permissionService";
-import {UrlConfig} from "../_share/config/urlConfig";
+import routerConfig from "../_share/config/routerConfig";
 
 @Component({
     templateUrl: "app/modules/security/permission/permissions.html",
@@ -24,7 +24,11 @@ export class Permissions extends BasePage{
     }
 
     private onAddPermissionClicked(): void{
-        this.router.navigate([UrlConfig.Create]);
+        this.router.navigate([routerConfig.addPermission.name]);
+    }
+
+    private onEditPermissionClicked(perItem: any) {
+        this.router.navigate([routerConfig.editPermission.name, {id: perItem.item.id}]);
     }
 
     private loadPermissions(): void{

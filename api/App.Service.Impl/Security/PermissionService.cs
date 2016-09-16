@@ -37,7 +37,7 @@ namespace App.Service.Impl.Security
 
         public void DeletePermission(string itemId)
         {
-            ValidationForDelete(itemId);
+            ValidationForIdPermission(itemId);
             using(IUnitOfWork uow = new UnitOfWork(new AppDbContext(IOMode.Write)))
             {
                 IPermissionRepository perRepo = IoC.Container.Resolve<IPermissionRepository>(uow);
@@ -46,7 +46,7 @@ namespace App.Service.Impl.Security
             }
         }
 
-        private void ValidationForDelete(string itemId)
+        private void ValidationForIdPermission(string itemId)
         {
             if (string.IsNullOrWhiteSpace(itemId))
             {
@@ -59,9 +59,10 @@ namespace App.Service.Impl.Security
             }
         }
 
-        public void CreatePermission(CreatePermissionRequest request)
+
+        public void CreatePermission(AddOrEditPermissionRequest request)
         {
-            ValidationForCreate(request);
+            ValidationForAddOrEdit(request, false);
             using(IUnitOfWork uow = new UnitOfWork(new AppDbContext(IOMode.Write)))
             {
                 IPermissionRepository perRepo = IoC.Container.Resolve<IPermissionRepository>(uow);
@@ -71,28 +72,73 @@ namespace App.Service.Impl.Security
             }
         }
 
-        private void ValidationForCreate(CreatePermissionRequest request)
+        private void ValidationForAddOrEdit(AddOrEditPermissionRequest request, bool isModify)
         {
-            IPermissionRepository perRepo = IoC.Container.Resolve<IPermissionRepository>();
             if (string.IsNullOrWhiteSpace(request.Name))
             {
-                throw new ValidationException("security.addPermission.nameIsRequired");
+                throw new ValidationException("security.addOrEditPermission.validation.nameIsRequired");
             }
             if (string.IsNullOrWhiteSpace(request.Key))
             {
-                throw new ValidationException("security.addPermission.keyIsRequired");
+                throw new ValidationException("security.addOrEditPermission.validation.keyIsRequired");
             }
             if (request.Key.Contains(" "))
             {
-                throw new ValidationException("security.addPermission.keyHasNotWhiteSpace");
+                throw new ValidationException("security.addOrEditPermission.validation.keyHasNotWhiteSpace");
             }
-            if (perRepo.GetByName(request.Name) != null)
+            if (isModify)
             {
-                throw new ValidationException("security.addPermission.nameWasExists");
+                IPermissionRepository perRepo = IoC.Container.Resolve<IPermissionRepository>();
+                Permission per = perRepo.GetById(request.Id);
+                if (perRepo.GetByName(request.Name) != null && perRepo.GetByName(request.Name).Name != per.Name)
+                {
+                    throw new ValidationException("security.addOrEditPermission.validation.nameWasExists");
+                }
+                if (perRepo.GetByKey(request.Key) != null && perRepo.GetByKey(request.Key).Key != per.Key)
+                {
+                    throw new ValidationException("security.addOrEditPermission.validation.keyWasExists");
+                }
             }
-            if (perRepo.GetByKey(request.Key) != null)
+            else
             {
-                throw new ValidationException("security.addPermission.keyWasExists");
+                IPermissionRepository perRepo = IoC.Container.Resolve<IPermissionRepository>();
+                if (perRepo.GetByName(request.Name) != null)
+                {
+                    throw new ValidationException("security.addOrEditPermission.validation.nameWasExists");
+                }
+                if (perRepo.GetByKey(request.Key) != null)
+                {
+                    throw new ValidationException("security.addOrEditPermission.validation.keyWasExists");
+                }
+            }
+        }
+
+        public Permission GetPermissionById(string perId)
+        {
+            ValidationForIdPermission(perId);
+            using(IUnitOfWork uow = new UnitOfWork(new AppDbContext(IOMode.Write)))
+            {
+                IPermissionRepository perRepo = IoC.Container.Resolve<IPermissionRepository>();
+                Permission per = perRepo.GetById(perId);
+                return per;
+            }
+        }
+
+        public void EditPermission(AddOrEditPermissionRequest request)
+        {
+            ValidationForAddOrEdit(request, true);
+            using(IUnitOfWork uow = new UnitOfWork(new AppDbContext(IOMode.Write)))
+            {
+                IPermissionRepository perRepo = IoC.Container.Resolve<IPermissionRepository>(uow);
+                Permission per = perRepo.GetById(request.Id);
+                if (per != null)
+                {
+                    per.Name = request.Name;
+                    per.Key = request.Key;
+                    per.Description = request.Description;
+                    perRepo.Update(per);
+                    uow.Commit();
+                }
             }
         }
     }
