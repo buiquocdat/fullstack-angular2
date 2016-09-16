@@ -4,10 +4,24 @@ import configHelper from "../../../../common/helpers/configHelper";
 let permissionService = {
     getPermissions: getPermissions,
     remove: remove,
-    create: create
+    create: create,
+    getPermissionById: getPermissionById,
+    edit: edit
 };
 
 export default permissionService;
+
+function getPermissionById(perId: string) {
+    let connector = window.ioc.resolve("IConnector");
+    let url = String.format("{0}/permissions/{1}", configHelper.getAppConfig().api.baseUrl, perId);
+    return connector.get(url);
+}
+
+function edit(item: any) {
+    let connector = window.ioc.resolve("IConnector");
+    let url = String.format("{0}/permissions", configHelper.getAppConfig().api.baseUrl);
+    return connector.put(url, item);
+}
 
 function getPermissions(){
     let connector = window.ioc.resolve("IConnector");

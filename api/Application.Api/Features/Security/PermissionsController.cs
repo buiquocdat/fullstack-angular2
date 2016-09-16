@@ -1,6 +1,7 @@
 ﻿using App.Common.DI;
 using App.Common.Http;
 using App.Common.Validation;
+using App.Entity.Security;
 using App.Service.Security;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -49,13 +50,50 @@ namespace App.Api.Features.Security
 
         [Route("")]
         [HttpPost]
-        public IResponseData<string> CreatePermissions([FromBody]CreatePermissionRequest request)
+        public IResponseData<string> CreatePermissions([FromBody]AddOrEditPermissionRequest request)
         {
             IResponseData<string> response = new ResponseData<string>();
             try
             {
                 IPermissionService perSerivce = IoC.Container.Resolve<IPermissionService>();
                 perSerivce.CreatePermission(request);
+            }
+            catch (ValidationException ex)
+            {
+                response.SetStatus(System.Net.HttpStatusCode.PreconditionFailed);
+                response.SetErrors(ex.Errors);
+            }
+            return response;
+        }
+
+        [Route("{perId}")]
+        [HttpGet]
+        public IResponseData<Permission> GetPermissionById([FromUri]string perId)
+        {
+            IResponseData<Permission> response = new ResponseData<Permission>();
+            try
+            {
+                IPermissionService perService = IoC.Container.Resolve<IPermissionService>();
+                Permission per = perService.GetPermissionById(perId);
+                response.SetData(per);
+            }
+            catch(ValidationException ex)
+            {
+                response.SetStatus(System.Net.HttpStatusCode.PreconditionFailed);
+                response.SetErrors(ex.Errors);
+            }
+            return response;
+        }
+
+        [Route("")]
+        [HttpPut]
+        public IResponseData<string> EditPermission([FromBody]AddOrEditPermissionRequest request)
+        {
+            IResponseData<string> response = new ResponseData<string>();
+            try
+            {
+                IPermissionService perService = IoC.Container.Resolve<IPermissionService>();
+                perService.EditPermission(request);
             }
             catch (ValidationException ex)
             {

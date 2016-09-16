@@ -4,6 +4,6 @@
           <page-actions class="pull-right" [actions]=model.actions ></page-actions>
     </h3>
     <div class="page-content x_content">
-        <grid (onItemDeleteClicked)="onDeletePermissionClicked($event)" [options]=model.options [eventKey]=model.eventKey ></grid>
+        <grid (onItemDeleteClicked)="onDeletePermissionClicked($event)" (onItemEditClicked)="onEditPermissionClicked($event)" [options]=model.options [eventKey]=model.eventKey ></grid>
     </div>
 </div>

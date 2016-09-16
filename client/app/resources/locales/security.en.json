@@ -32,19 +32,22 @@
             }
         }
     },
-    "addPermission":{
-        "title": "Add Permission",
+    "addOrEditPermission":{
+        "addTitle": "Add Permission",
+        "editTitle": "Edit Permission",
         "name": "Name",
         "placeHolderName": "Name of permission",
         "key": "Key",
         "placeHolderKey": "Key of permission",
         "description": "Description",
         "placeHolderDesc": "Description of permission",
-        "nameIsRequired": "Name of permission was required",
-        "keyIsRequired": "Key of permission was required",
-        "keyHasNotWhiteSpace": "Key of permission should not contain whitespace",
-        "keyWasExists": "Key was exists",
-        "nameWasExists": "Name was exists"
+        "validation": {
+            "nameIsRequired": "Name of permission was required",
+            "keyIsRequired": "Key of permission was required",
+            "keyHasNotWhiteSpace": "Key of permission should not contain whitespace",
+            "keyWasExists": "Key was exists",
+            "nameWasExists": "Name was exists"
+        }
     },
     "addOrUpdatePermission":{
         "title":"Add Permission",

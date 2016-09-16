@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using App.Entity.Security;
 
 namespace App.Service.Security
 {
@@ -7,6 +8,8 @@ namespace App.Service.Security
         void CreateIfNotExist(IList<Entity.Security.Permission> permissons);
         IList<PermissionListItem> GetPermissions();
         void DeletePermission(string itemId);
-        void CreatePermission(CreatePermissionRequest request);
+        void CreatePermission(AddOrEditPermissionRequest request);
+        Permission GetPermissionById(string perId);
+        void EditPermission(AddOrEditPermissionRequest request);
     }
 }
