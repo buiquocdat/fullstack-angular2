@@ -7,13 +7,13 @@ export class AddOrEditPermissionModel {
     public description: string = String.empty;
     public inValid(): boolean {
         let validation: ValidationException = new ValidationException();
-        if(String.isNullOrWhiteSpace(this.name)){
+        if (String.isNullOrWhiteSpace(this.name)) {
             validation.add("security.addOrEditPermission.validation.nameIsRequired");
         }
-        if(String.isNullOrWhiteSpace(this.key)){
+        if (String.isNullOrWhiteSpace(this.key)) {
             validation.add("security.addOrEditPermission.validation.keyIsRequired");
         }
-        if(this.key.split(" ").length > 1){
+        if (this.key.split(" ").length > 1) {
             validation.add("security.addOrEditPermission.validation.keyHasNotWhiteSpace");
         }
         validation.throwIfHasError();

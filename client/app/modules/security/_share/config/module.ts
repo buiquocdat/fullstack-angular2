@@ -15,8 +15,8 @@ function createModule() {
     );
     module.addRoutes([
         { path: routerConfig.permissions.path, name: routerConfig.permissions.name, component: Permissions, data: { authentication: AuthenticationMode.Require } },
-        { path: routerConfig.addPermission.path, name: routerConfig.addPermission.name, component: AddOrEditPermission, data: { authentication: AuthenticationMode.Require}},
-        { path: routerConfig.editPermission.path, name: routerConfig.editPermission.name, component: AddOrEditPermission, data: { authentication: AuthenticationMode.Require }} 
+        { path: routerConfig.addPermission.path, name: routerConfig.addPermission.name, component: AddOrEditPermission, data: { authentication: AuthenticationMode.Require } },
+        { path: routerConfig.editPermission.path, name: routerConfig.editPermission.name, component: AddOrEditPermission, data: { authentication: AuthenticationMode.Require } }
     ]);
     return module;
 }
