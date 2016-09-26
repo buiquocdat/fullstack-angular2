@@ -17,11 +17,11 @@ export class AddOrEditPermission extends BasePage {
     private routeParams: RouteParams;
     public pageTitle: string;
     public perId: string = String.empty;
-    constructor(router: Router, routeParams: RouteParams){
+    constructor(router: Router, routeParams: RouteParams) {
         super();
         this.router = router;
         this.routeParams = routeParams;
-        if(this.routeParams.get("id") != null){
+        if (this.routeParams.get("id") != null) {
             this.pageTitle = this.i18nHelper.resolve("security.addOrEditPermission.editTitle");
             this.perId = this.routeParams.get("id");
             this.getPermissionById(this.perId);
@@ -37,15 +37,15 @@ export class AddOrEditPermission extends BasePage {
             self.model.name = response.name;
             self.model.key = response.key;
             self.model.description = response.description;
-        })
+        });
     }
 
     public onSaveClicked(): void {
         let self: AddOrEditPermission = this;
-        if(!this.model.inValid()){
+        if (!this.model.inValid()) {
             return;
         }
-        if(String.isNullOrWhiteSpace(this.perId)){
+        if (String.isNullOrWhiteSpace(this.perId)) {
             permissionService.create(this.model).then(() => {
                 self.router.navigate([routerConfig.permissions.name]);
             });

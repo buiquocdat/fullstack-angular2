@@ -11,10 +11,10 @@ import routerConfig from "../_share/config/routerConfig";
     directives: [PageActions, Grid]
 })
 
-export class Permissions extends BasePage{
+export class Permissions extends BasePage {
     public model: PermissionsModel;
     private router: Router;
-    constructor(router: Router){
+    constructor(router: Router) {
         super();
         let self: Permissions = this;
         this.router = router;
@@ -23,25 +23,25 @@ export class Permissions extends BasePage{
         this.loadPermissions();
     }
 
-    private onAddPermissionClicked(): void{
+    private onAddPermissionClicked(): void {
         this.router.navigate([routerConfig.addPermission.name]);
     }
 
     private onEditPermissionClicked(perItem: any) {
-        this.router.navigate([routerConfig.editPermission.name, {id: perItem.item.id}]);
+        this.router.navigate([routerConfig.editPermission.name, { id: perItem.item.id }]);
     }
 
-    private loadPermissions(): void{
+    private loadPermissions(): void {
         let self: Permissions = this;
         permissionService.getPermissions().then((perItems: Array<any>) => {
             self.model.import(perItems);
-        })
+        });
     }
 
-    private onDeletePermissionClicked(perItem: any): void{
+    private onDeletePermissionClicked(perItem: any): void {
         let self: Permissions = this;
         permissionService.remove(perItem.item.id).then(() => {
             self.loadPermissions();
-        })
+        });
     }
 }

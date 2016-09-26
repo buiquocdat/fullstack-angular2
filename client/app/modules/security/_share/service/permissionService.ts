@@ -23,13 +23,13 @@ function edit(item: any) {
     return connector.put(url, item);
 }
 
-function getPermissions(){
+function getPermissions() {
     let connector = window.ioc.resolve("IConnector");
     let url = String.format("{0}/permissions", configHelper.getAppConfig().api.baseUrl);
     return connector.get(url);
 }
 
-function remove(itemId: any){
+function remove(itemId: any) {
     let connector = window.ioc.resolve("IConnector");
     let url = String.format("{0}/permissions/{1}", configHelper.getAppConfig().api.baseUrl, itemId);
     return connector.delete(url);
