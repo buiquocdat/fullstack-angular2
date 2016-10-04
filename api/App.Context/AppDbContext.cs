@@ -4,6 +4,7 @@ using App.Common.Data;
 using System;
 using App.Common;
 using App.Entity.Security;
+using App.Entity.ContentManagement;
 
 namespace App.Context
 {
@@ -17,6 +18,7 @@ namespace App.Context
         public System.Data.Entity.DbSet<Permission> Permissions { get; set; }
         public System.Data.Entity.DbSet<Role> Roles { get; set; }
         public System.Data.Entity.DbSet<UserGroup> UserGroups { get; set; }
+        public System.Data.Entity.DbSet<Category> Categories { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -31,6 +33,7 @@ namespace App.Context
                     m.MapRightKey("PermissionId");
                     m.ToTable("PermissionInRoles");
                 });
+            modelBuilder.Entity<Category>().ToTable("Categories");
         }
     }
 }

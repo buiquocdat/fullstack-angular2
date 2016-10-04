@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
     <Compile Include="Common\LanguageService.cs" />
+    <Compile Include="ContentManagement\CategoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration\UserService.cs" />
     <Compile Include="Security\PermissionService.cs" />

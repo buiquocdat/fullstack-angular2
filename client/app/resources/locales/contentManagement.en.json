@@ -1,0 +1,26 @@
+{
+    "categories":{
+        "title":"Categories",
+        "addCategoryAction":"Add Category",
+        "grid":{
+            "columns":{
+                "name": "Name",
+                "status": "Status",
+                "desc": "Description"
+            }
+        }
+    },
+    "addOrEditCategory":{
+        "addTitle": "Add Category",
+        "editTitle": "Edit Category",
+        "name": "Name",
+        "placeHolderName": "Name of category",
+        "status": "Status",
+        "description": "Description",
+        "placeHolderDesc": "Description of category",
+        "validation": {
+            "nameIsRequired": "Name of category was required",
+            "nameWasExists": "Name was exists"
+        }
+    }
+}
