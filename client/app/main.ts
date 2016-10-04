@@ -38,5 +38,5 @@ function configIoC() {
   ioc.import(config.ioc);
   window.ioc = ioc;
   let resourceHelper: ResourceHelper = window.ioc.resolve("IResource");
-  resourceHelper.load(["common", "registration", "security"]);
+  resourceHelper.load(["common", "registration", "security", "contentManagement"]);
 }

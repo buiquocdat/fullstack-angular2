@@ -3,12 +3,14 @@ import umModule from "../modules/usermanagement/_share/config/module";
 import timesheetModule from "../modules/timesheet/_share/config/module";
 import registration from "../modules/registration/_share/config/module";
 import security from "../modules/security/_share/config/module";
+import contentManagement from "../modules/contentManagement/_share/config/module";
 import {Languages} from "../common/enum";
 let modules: Array<IModule> = [
     umModule,
     timesheetModule,
     registration,
-    security
+    security,
+    contentManagement
 ];
 export default {
     app: {

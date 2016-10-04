@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
     <Compile Include="Common\LanguageRepository.cs" />
+    <Compile Include="ContentManagement\CategoryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration\UserRepository.cs" />
     <Compile Include="Security\PermissionRepository.cs" />
