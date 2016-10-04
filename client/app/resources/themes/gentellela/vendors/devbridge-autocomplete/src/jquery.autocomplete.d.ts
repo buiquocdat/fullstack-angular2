@@ -1,4 +1,4 @@
-/* tslint:disable */
+
 interface JQueryAutocompleteOptions {
     serviceUrl?: string;
     lookup?: AutocompleteSuggestion[];
@@ -13,13 +13,13 @@ interface JQueryAutocompleteOptions {
     delimiter?: any;
     zIndex?: number;
     type?: string;
-    noCache?: Boolean;
+    noCache?: bool;
     onSearchStart? (query: string): void;
     onSearchComplete? (query: string): void;
-    tabDisabled?: Boolean;
+    tabDisabled?: bool;
     paramName?: string;
     transformResult? (response: any, originalQuery: string): AutocompleteSuggestion[];
-    autoSelectFirst?: Boolean;
+    autoSelectFirst?: bool;
     appendTo: any;
     dataType: string;
 }

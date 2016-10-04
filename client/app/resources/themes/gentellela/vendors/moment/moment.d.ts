@@ -1,4 +1,3 @@
-/* tslint:disable */
 declare function moment(): moment.Moment;
 declare function moment(date: number): moment.Moment;
 declare function moment(date: number[]): moment.Moment;
